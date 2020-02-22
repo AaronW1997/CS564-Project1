@@ -113,10 +113,7 @@ def parseJson(json_file):
             
      # Buyer table
      Buyer = {}
-     def BuyerTable(item):
-     # Buyer table
-     Buyer = {}
-     def BuyerTable(item): 
+     
 
 
      # Item
@@ -136,6 +133,20 @@ def parseJson(json_file):
          started = transformDttm(item['Started'])
          ends = transformDttm(item['Ends'])
          description = item['Description'].replace('"', '""') if item['Description'] is not None else ""
+         
+     # Bid
+     ItemBid = []
+     Bid = []
+     def BidTable(item):
+         global Bid
+         global ItemBid
+         if item['Bids'] is None: return
+         for bid in item['Bids']: 
+             bid_id  = str(len(Bid) + 1)
+             element = bid['Bid']['Bidder']['UserID'] + '|'
+             element += transformDttm(bid['Bid']['Time']) + '|'
+             element += transformDollar(bid['Bid']['Amount'])
+             
 """
 TODO: traverse the items dictionary to extract information from the
 given `json_file' and generate the necessary .dat files to generate
