@@ -5,4 +5,4 @@ do
 args = "{args} ebay_data/${file}"
 done
 
-python skeleton_parser.py $args
+python skeleton_parser2.py $args
